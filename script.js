@@ -4,6 +4,7 @@ const random = document.getElementById("random");
 const mealEl = document.getElementById("meals");
 const resultHeading = document.querySelector(".result-heading");
 const singleMealEl = document.getElementById("single-meal");
+const favoriteMealsList = document.getElementById("favorite-meals");
 const favoriteMeals = [];
 
 // Search meal
@@ -102,6 +103,37 @@ mealEl.addEventListener("click", (e) => {
     const mealID = mealInfo.getAttribute("data-mealID");
     const mealName = mealInfo.querySelector("h3").textContent;
     favoriteMeals.push({ id: mealID, name: mealName });
+    console.log(favoriteMeals);
+  }
+});
+
+
+
+
+// Function to add a meal to the favorites list
+function addToFavorites(mealID, mealName) {
+  const favoriteMeal = document.createElement("li");
+  favoriteMeal.innerHTML = `<span>${mealName}</span> <button class="btn-remove">Remove</button>`;
+  favoriteMeal.querySelector(".btn-remove").addEventListener("click", () => removeFromFavorites(mealID));
+  favoriteMealsList.appendChild(favoriteMeal);
+}
+
+// Function to remove a meal from the favorites list
+function removeFromFavorites(mealID) {
+  const favoriteMeal = document.querySelector(`#favorite-meals li[data-mealID="${mealID}"]`);
+  if (favoriteMeal) {
+    favoriteMeal.remove();
+  }
+}
+
+// Event listener for the "Add to Favorites" button
+mealEl.addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn-favorite")) {
+    const mealInfo = e.target.parentElement;
+    const mealID = mealInfo.getAttribute("data-mealID");
+    const mealName = mealInfo.querySelector("h3").textContent;
+    favoriteMeals.push({ id: mealID, name: mealName });
+    addToFavorites(mealID, mealName);
     console.log(favoriteMeals);
   }
 });

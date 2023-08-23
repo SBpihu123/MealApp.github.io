@@ -1,6 +1,7 @@
 /* Reset styles */
 * {
   box-sizing: border-box;
+  cursor: pointer;
   margin: 0;
   padding: 0;
 }
@@ -147,6 +148,42 @@ h1 {
 .single-meal ul li {
   margin: 5px 0;
 }
+
+/* Favorite meals section styles */
+.favorites {
+  margin-top: 40px;
+}
+
+.favorite-meals {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.favorite-meals li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+}
+
+.favorite-meals li span {
+  flex-grow: 1;
+}
+
+.favorite-meals li button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 /* Media queries */
 @media (max-width: 800px) {
